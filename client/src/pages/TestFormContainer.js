@@ -1,30 +1,53 @@
 import React, { useState, useEffect } from 'react';
-// import downloadFile from '../components/CreateDownload'
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 
 import { SAVE_BITESITE } from '../utils/mutations';
 import TestForm from '../components/TestForm';
+import TestFormMUI from '../components/TestFormMUI';
+import TestFormOutput from '../components/TestFormOutput';
+import { Container } from '@mui/material';
+import { red, green, blue } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
 
 
 const TestFormContainer = () => {
   // create state for holding returned google api data
-  const [selectedSoMes, setSelectedSoMes] = useState([]);
+  const [userEntryArray, setUserEntryArray] = useState([]);
   
-  // // create function to handle saving a social to our database
-  // const handleSaveSoMe = async () => {
-  //   // find the social in `searchedSoMes` state by the matching id
-   
-  //   // get token
-  //   // const token = Auth.loggedIn() ? Auth.getToken() : null;
-  //   // if (!token) {
-  //   //   return false;
-  //   // }
+  function buildUserEntryArray(values) {
+    setUserEntryArray(values)
+    console.log(values)
+  }
+
+  let myFormEntry = {
+    entries: userEntryArray
+  }
+  
+  const StyledSizedFormBucket = styled('div')(({ theme }) => ({
+    padding: theme.spacing(2),
+    [theme.breakpoints.down('md')]: {
+      backgroundColor: red[500],
+    },
+    [theme.breakpoints.up('md')]: {
+      backgroundColor: blue[500],
+    },
+    [theme.breakpoints.up('lg')]: {
+      backgroundColor: green[500],
+    },
+  }));
+  
 
   return (
-    <>
-        <TestForm/>
-    </>
+    <div >
+        <p>Using Vanilla Formik</p>
+        <TestForm buildUserEntryArray={buildUserEntryArray} ></TestForm>
+        <p>Using MUI</p>
+        <StyledSizedFormBucket>
+          <TestFormMUI buildUserEntryArray={buildUserEntryArray} ></TestFormMUI>
+        </StyledSizedFormBucket>
+        <TestFormOutput myFormEntry={myFormEntry} ></TestFormOutput>
+    </div>
   );
 };
 
