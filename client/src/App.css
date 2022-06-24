@@ -1,5 +1,174 @@
+:root {
+  /* #2E8AE6 is base color */
+  --darkest: rgb(33, 99, 166, 0.65);
+  --flatText: rgb(20, 61, 102, 0.4);
+  --lightest: rgb(46, 138, 230, 0.9);
+  --grayTone: rgb(48, 145, 242, 0.95);
+  --offDark: rgba(41, 122, 204, 0.8);
+  --textcolor1: rgb(255, 255, 255, 1);
+
+  --mainbackg: rgb(15, 46, 77, 1);
+  --backg1: linear-gradient(rgb(15, 46, 77, 1) 30%,
+      rgb(23, 69, 115, 1) 70%);
+
+
+  /* --darkest: rgba(15, 30, 35, 0.95);
+  --flatText: rgb(192, 203, 227, 0.6);
+  --lightest: rgb(192, 203, 227, 0.95);
+  --grayTone: rgb(127, 160, 232, 0.91);
+  --offDark: rgb(55, 65, 99, 0.39);
+  --textcolor1: rgb(255, 255, 255, 1); */
+  /* 
+  --darkest: rgb(20, 30, 24, 1);
+  --flatText: rgb(2, 2, 2);
+  --lightest: rgb(124, 200, 154, 1);
+  --grayTone: rgb(127, 138, 131, 1);
+  --offDark: rgba(174, 189, 180, 1);
+  --textcolor1: rgb(255, 255, 255, 1); */
+
+  /* --darkest: rgb(3, 42, 82, 1);
+  --flatText: rgb(121, 169, 217, 1);
+  --lightest: rgb(8, 109, 209, 1);
+  --grayTone: rgb(109, 111, 112, 1);
+  --offDark: rgb(6, 81, 158, 1);
+  --textcolor1: rgb(255, 255, 255, 1); */
+
+}
+
+
+body {
+  background-color: var(--mainbackg);
+  color: var(--textcolor1);
+  padding: 1em 5em 5em 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mycustomlabel {
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  text-align: center;
+  /* padding-top: 1em; */
+  padding-bottom: 1em;
+  flex-direction: column;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* custom CSS for radio buttons */
+input[type="radio"]:checked::before {
+  /* Use `visibility` instead of `display` to avoid recalculating layout */
+  visibility: visible;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  justify-self: start;
+  top: 0.1em;
+  left: -1em;
+  width: 3em;
+  height: 3em;
+  /* Adjusts the position of the checkboxes on the text baseline */
+  vertical-align: -2px;
+  /* Set here so that Windows' High-Contrast Mode can override */
+  color: white;
+}
+
+input[type="radio"]::before {
+  content: "●";
+  position: absolute;
+  font-size: 2em;
+  right: 0;
+  top: -0.35em;
+  visibility: hidden;
+}
+
+
+
+input[type="radio"]:disabled {
+  border-color: black;
+  background: white;
+  color: var(--textcolor1);
+}
+
+
+/* custom CSS for checkboxes */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  justify-self: start;
+  top: 0.2em;
+  left: -1.5em;
+  width: 3em;
+  height: 3em;
+  /* Adjusts the position of the checkboxes on the text baseline */
+  vertical-align: -2px;
+  /* Set here so that Windows' High-Contrast Mode can override */
+  color: white;
+
+}
+
+
+input[type="checkbox"]::before {
+  content: "X";
+  position: absolute;
+  font-size: 2em;
+  right: 0;
+  top: -0.35em;
+  visibility: hidden;
+  height: 1em;
+  vertical-align: middle;
+
+}
+
+input[type="checkbox"]:checked::before {
+  /* Use `visibility` instead of `display` to avoid recalculating layout */
+  visibility: visible;
+}
+
+input[type="checkbox"]:disabled {
+  border-color: black;
+  background: white;
+  color: var(--textcolor1);
+}
+
+/*  ensure text is readable throughout app */
+
+input[type="text"], input[type="email"], input[type="password"], .form-input, textarea {
+  background-color: var(--darkest);
+  color: var(--textcolor1);
+  border: var(--grayTone) solid 1px;
+  border-radius: 5px;
+  text-indent: 0.5em;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#pfp {
+  height: 200px;
+  width: 200px;
+}
+#show {
+  border-radius: 15px;
+}
+#this {
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -28,11 +197,98 @@
   color: #61dafb;
 }
 
+#profile {
+  min-height: 100%;
+  animation: transitionIn 3s;
+  background-size: cover;
+  background: transparent;
+}
+
+#profile:after {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+
+
+  background-size: cover;
+}
+
+.background:after {
+  position: fixed;
+  background-size: 100%;
+  background-image: linear-gradient(0deg, rgba(0, 0, 2, 0.989), rgba(24, 5, 60, 0.89));
+  background-repeat: repeat;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+#animar {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.displaynone {
+  display: none;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+.myButtonAdvanceClass {
+  font-size: 48px;
+}
+
+.specialGrid {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 600px;
+  width: 600px;
+  align-self: center;
+}
+
+/* media tags help content display favorably in tablet and mobile browser viewports */
+@media screen and (max-width: 992px) {
+  .specialGrid {
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 290px;
+    width: 290px;
+    /* padding: 10px 10px 10px 10px; */
+  }
+
+  /* add this class to individual item */
+  .specialLoginSignup {
+    margin: 0;
+    margin-top: 2.5rem;
+  }
+
+  /* add this class to container */
+  .specialForm {
+    flex-direction: column;
+  }
+
+  .specialHeader {
+    /* 36px */
+    font-size: 200%;
+    /* 40px */
+    line-height: 2.5rem;
+  }
+}
+
+/* 
+@media screen and (max-width: 768px) {
+} */
