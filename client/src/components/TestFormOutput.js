@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { SAVE_BITESITE } from '../utils/mutations';
+import  { TextField, Button, FormControl, spacing, Typography } from '@mui/material';
 
 const ShowForm = ({myFormEntry}) => {
   // candidate state function
@@ -11,9 +12,9 @@ const ShowForm = ({myFormEntry}) => {
     <>
     <div className="flex-cols space-y-8 ">
         {/* Previously had download button on top to 'build the form' */}
-        <p>Doing so well submitting - here's a rocket 🚀 </p>
+        <Typography variant="h6">Doing so well submitting - here's a rocket 🚀 </Typography>
         <pre
-          style={{
+          sx={{
             fontSize: '.65rem',
             padding: '.25rem .5rem',
             overflowX: 'scroll',

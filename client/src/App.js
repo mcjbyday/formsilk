@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import TestFormContainer from './pages/TestFormContainer'
 import MyForms from './pages/MyForms';
 import './App.css'
+import { ThemeProvider, createTheme } from '@mui/material';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -26,6 +27,20 @@ const authLink = setContext((_, { headers }) => {
 });
 
 
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#29A632',
+    },
+    secondary: {
+      main: '#BCE0BF',
+    },
+  },
+  // typography
+});
+
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
@@ -36,19 +51,21 @@ export default function App() {
   const [authState, setAuthState] = useState(localStorage.getItem('id_token'));
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <Routes>
-          <Route
-            path='/'
-            element={authState ? <MyForms /> : <Home setAuthState={setAuthState} />}
-          />
-          <Route
-            path='/getform'
-            element={<TestFormContainer />}
-            // element={authState ? <TestFormContainer /> : <Home setAuthState={setAuthState} />}
-          />
-        </Routes>
-      </Router>
+      <ThemeProvider theme={theme} >
+        <Router>
+          <Routes>
+            <Route
+              path='/'
+              element={authState ? <MyForms /> : <Home setAuthState={setAuthState} />}
+            />
+            <Route
+              path='/getform'
+              element={<TestFormContainer />}
+              // element={authState ? <TestFormContainer /> : <Home setAuthState={setAuthState} />}
+            />
+          </Routes>
+        </Router>
+        </ThemeProvider>
     </ApolloProvider>
   )
 };

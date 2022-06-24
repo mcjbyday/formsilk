@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useFormik } from 'formik';
-import  { TextField, Button, FormControl, spacing } from '@mui/material';
+import  { TextField, Button, FormControl, spacing, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import * as yup from 'yup';
+// import { useTheme } from '@mui/styles';
 
 
 const TestFormMUI = ({buildUserEntryArray}) => {
@@ -11,6 +12,7 @@ const TestFormMUI = ({buildUserEntryArray}) => {
     // be called when the form is submitted
     // returns to us a goodie bag of form state and helper methods in a variable we call formik
 
+    // const yourTheme = useTheme(); 
     // click handler to push into an array
     const [URLsArray, setURLsArray] = useState([])
 
@@ -36,28 +38,32 @@ const TestFormMUI = ({buildUserEntryArray}) => {
         email: '',
         password: '',
         },
-        // validationSchema: validationSchema,
+        validationSchema: validationSchema,
         onSubmit: (values) => {
             buildUserEntryArray([values.email, values.password])
         },
     });
     // some layout preferences
-    const myLayoutPreferences = {
-        m: 1
+    const myVertSpacingPreferences = {
+        m: "1em"
     }
-    
+    const myLateralMaxWithPreferences = {
+        x: 0.4
+    }
 
+    
+    
     return (
         <div>
             
-            {/* <form onSubmit={formik.handleSubmit} > */}
-                <FormControl 
+            <form onSubmit={formik.handleSubmit} >
+                <FormControl
                     onSubmit={formik.handleSubmit} 
-                    sx={myLayoutPreferences}
+                    sx={myVertSpacingPreferences}
                     >
-                    <h2 id="testInstructionsTopline">{instructionsBlob.winChanceInstructions}</h2>
+                    <Typography variant="h6" id="testInstructionsTopline">{instructionsBlob.winChanceInstructions}</Typography>
                     <TextField
-                    sx={myLayoutPreferences}
+                    sx={myVertSpacingPreferences}
                     id="email"
                     name="email"
                     label="Email"
@@ -67,7 +73,7 @@ const TestFormMUI = ({buildUserEntryArray}) => {
                     helperText={formik.touched.email && formik.errors.email}
                     />
                     <TextField
-                    sx={myLayoutPreferences}
+                    sx={myVertSpacingPreferences}
                     id="password"
                     name="password"
                     label="Password"
@@ -78,12 +84,15 @@ const TestFormMUI = ({buildUserEntryArray}) => {
                     helperText={formik.touched.password && formik.errors.password}
                     />
                     <Button 
-                    sx={myLayoutPreferences}
-                    color="primary" variant="contained"  type="submit" endIcon={<SendIcon/>}>
+                    sx={myVertSpacingPreferences}
+                    color="primary" 
+                    variant="contained"  
+                    type="submit" 
+                    endIcon={<SendIcon/>}>
                     Submit
                     </Button>
                 </FormControl>
-            {/* </form> */}
+            </form>
             
         </div>
     );
