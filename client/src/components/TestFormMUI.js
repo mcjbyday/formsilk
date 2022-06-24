@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useFormik } from 'formik';
-import  { TextField, Button, FormGroup, spacing } from '@mui/material';
+import  { TextField, Button, FormControl, spacing } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import * as yup from 'yup';
 
@@ -33,27 +33,31 @@ const TestFormMUI = ({buildUserEntryArray}) => {
 
     const formik = useFormik({
         initialValues: {
-        email: 'foobar@example.com',
-        password: 'foobar',
+        email: '',
+        password: '',
         },
         // validationSchema: validationSchema,
         onSubmit: (values) => {
             buildUserEntryArray([values.email, values.password])
         },
     });
-
-        
+    // some layout preferences
+    const myLayoutPreferences = {
+        m: 1
+    }
+    
 
     return (
         <div>
-            <h2 id="testInstructionsTopline">{instructionsBlob.winChanceInstructions}</h2>
             
-            <form onSubmit={formik.handleSubmit} >
-                <FormGroup >
+            {/* <form onSubmit={formik.handleSubmit} > */}
+                <FormControl 
+                    onSubmit={formik.handleSubmit} 
+                    sx={myLayoutPreferences}
+                    >
+                    <h2 id="testInstructionsTopline">{instructionsBlob.winChanceInstructions}</h2>
                     <TextField
-                    sx={{
-                        p: 2
-                    }}
+                    sx={myLayoutPreferences}
                     id="email"
                     name="email"
                     label="Email"
@@ -63,9 +67,7 @@ const TestFormMUI = ({buildUserEntryArray}) => {
                     helperText={formik.touched.email && formik.errors.email}
                     />
                     <TextField
-                    sx={{
-                        p: 2
-                    }}
+                    sx={myLayoutPreferences}
                     id="password"
                     name="password"
                     label="Password"
@@ -76,14 +78,12 @@ const TestFormMUI = ({buildUserEntryArray}) => {
                     helperText={formik.touched.password && formik.errors.password}
                     />
                     <Button 
-                    sx={{
-                        p: 2
-                    }} 
+                    sx={myLayoutPreferences}
                     color="primary" variant="contained"  type="submit" endIcon={<SendIcon/>}>
                     Submit
                     </Button>
-                </FormGroup>
-            </form>
+                </FormControl>
+            {/* </form> */}
             
         </div>
     );
