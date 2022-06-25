@@ -7,7 +7,6 @@ import TestForm from '../components/TestForm';
 import TestFormMUI from '../components/TestFormMUI';
 import TestFormOutput from '../components/TestFormOutput';
 import { Container } from '@mui/material';
-import { red, green, blue } from '@mui/material/colors';
 
 
 const TestFormContainer = () => {
@@ -23,10 +22,15 @@ const TestFormContainer = () => {
     entries: userEntryArray
   }
 
+  const myLateralMaxWithPreferences = {
+    x: 0.4,
+    alignSelf: "center"
+}
+
 
 
   return (
-    <>
+    <Container sx={{display: 'flex', flexDirection: 'column', x: 0.4, justifyContent: 'center', justifyItems: 'center', alignItems: 'center'}}>
       {/* <p>Using Vanilla Formik</p>*/}
       {/* <TestForm buildUserEntryArray={buildUserEntryArray} ></TestForm> */}
 
@@ -34,7 +38,7 @@ const TestFormContainer = () => {
 
 
       <TestFormOutput myFormEntry={myFormEntry} ></TestFormOutput>
-    </>
+    </Container>
   );
 };
 

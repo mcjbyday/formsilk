@@ -56,13 +56,14 @@ export default function App() {
           <Routes>
             <Route
               path='/'
-              element={authState ? <MyForms /> : <Home setAuthState={setAuthState} />}
+              element={<TestFormContainer />}
+              // element={authState ? <MyForms /> : <Home setAuthState={setAuthState} />}
             />
-            <Route
+            {/* <Route
               path='/getform'
               element={<TestFormContainer />}
               // element={authState ? <TestFormContainer /> : <Home setAuthState={setAuthState} />}
-            />
+            /> */}
           </Routes>
         </Router>
         </ThemeProvider>
