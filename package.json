@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/mcjbyday/formsilk/issues"
   },
-  "homepage": "https://github.com/mcjbyday/formsilk#readme"
+  "homepage": "https://github.com/mcjbyday/formsilk#readme",
+  "dependencies": {
+    "gzipper": "^7.1.0"
+  }
 }
