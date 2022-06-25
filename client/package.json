@@ -2,6 +2,7 @@
   "name": "formsilk",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@emotion/react": "^11.9.3",
@@ -12,6 +13,8 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "formik": "^2.2.9",
+    "gh-pages": "^4.0.0",
+    "gzipper": "^7.1.0",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -22,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build  && gzipper c --gzip --verbose ./build ./dist --output-file-format [filename].[ext]",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

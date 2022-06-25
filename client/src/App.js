@@ -50,23 +50,27 @@ const client = new ApolloClient({
 export default function App() {
   const [authState, setAuthState] = useState(localStorage.getItem('id_token'));
   return (
-    <ApolloProvider client={client}>
-      <ThemeProvider theme={theme} >
-        <Router>
-          <Routes>
-            <Route
-              path='/'
-              element={<TestFormContainer />}
-              // element={authState ? <MyForms /> : <Home setAuthState={setAuthState} />}
-            />
-            {/* <Route
-              path='/getform'
-              element={<TestFormContainer />}
-              // element={authState ? <TestFormContainer /> : <Home setAuthState={setAuthState} />}
-            /> */}
-          </Routes>
-        </Router>
-        </ThemeProvider>
-    </ApolloProvider>
+    <ThemeProvider theme={theme} >
+      <TestFormContainer />
+    </ThemeProvider>
+    
+    // <ApolloProvider client={client}>
+    //   <ThemeProvider theme={theme} >
+    //     <Router>
+    //       <Routes>
+    //         <Route
+    //           path='/'
+    //           element={<TestFormContainer />}
+    //           // element={authState ? <MyForms /> : <Home setAuthState={setAuthState} />}
+    //         />
+    //         {/* <Route
+    //           path='/getform'
+    //           element={<TestFormContainer />}
+    //           // element={authState ? <TestFormContainer /> : <Home setAuthState={setAuthState} />}
+    //         /> */}
+    //       </Routes>
+    //     </Router>
+    //     </ThemeProvider>
+    // </ApolloProvider>
   )
 };
