@@ -26,6 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build  && gzipper c --gzip --verbose ./build ./dist --output-file-format [filename].[ext]",
+    "deploy": "gh-pages -d dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
